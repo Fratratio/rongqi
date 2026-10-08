@@ -1,0 +1,170 @@
+/* ==========================================================
+   site.css —— 建立在 Tufte CSS 之上的定制层
+   目标：纸感、克制、以照片和手写标注为主角
+   ========================================================== */
+
+html { font-size: 16px; }
+
+body {
+    font-family: "et-book", Palatino, "Palatino Linotype", Georgia,
+                 "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC",
+                 "Source Han Serif SC", serif;
+    color: #2b2b28;
+}
+
+/* 保持纸感，不跟随系统深色 */
+@media (prefers-color-scheme: dark) {
+    body { background-color: #fffff8; color: #2b2b28; }
+}
+
+p { line-height: 1.9; }
+
+/* 中文标题不用斜体（伪斜体很难看） */
+h1, h2, h3 { font-style: normal; }
+h1 { font-size: 2.6rem; margin-top: 1rem; letter-spacing: 0.01em; }
+h2 { font-size: 1.9rem; margin-top: 2.8rem; margin-bottom: 1.2rem; }
+h3 { font-size: 1.3rem; margin-top: 2.2rem; }
+
+p.subtitle { font-style: normal; font-size: 1.25rem; color: #6f6a5c; }
+
+/* ---------- 顶部导航 ---------- */
+header.masthead {
+    padding: 2.2rem 0 0.9rem;
+    border-bottom: 1px solid #e3ded1;
+    margin-bottom: 3.2rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem 2rem;
+}
+header.masthead .brand {
+    font-size: 1.35rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    color: #2b2b28;
+}
+header.masthead nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+header.masthead nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #6f6a5c;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+}
+header.masthead nav a:hover { color: #2b2b28; border-bottom-color: #96703f; }
+header.masthead nav a[aria-current="page"] {
+    color: #2b2b28;
+    border-bottom-color: #96703f;
+}
+
+/* ---------- 首页欢迎语 ---------- */
+blockquote.welcome {
+    margin: 2rem 0 2.6rem;
+    padding: 0.15rem 0 0.15rem 1.2rem;
+    border-left: 2px solid #96703f;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: #3f3b32;
+}
+blockquote.welcome p { margin: 0; }
+
+/* ---------- 页脚 ---------- */
+footer.colophon {
+    margin-top: 5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #e3ded1;
+    font-size: 0.95rem;
+    color: #7d7565;
+    line-height: 1.8;
+}
+
+/* ---------- 记忆条目：图在左，标注在右 ---------- */
+figure.memory { margin: 0 0 3.5rem 0; }
+figure.memory::after { content: ""; display: block; clear: both; }
+figure.memory img { width: 100%; display: block; }
+
+figcaption {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #4a473f;
+}
+.memory-date {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: #96703f;
+    margin-bottom: 0.45rem;
+}
+
+/* ---------- 照片占位框（等你上传真实照片） ---------- */
+.photo-slot {
+    background: #efece2;
+    border: 1px dashed #c9c2ac;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9a927c;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ---------- 列表页（文字 / 收藏） ---------- */
+ul.archive {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.archive li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid #ece7da;
+}
+ul.archive li:first-child { border-top: 1px solid #ece7da; }
+ul.archive .item-date {
+    font-size: 0.85rem;
+    color: #96703f;
+    letter-spacing: 0.06em;
+    margin-right: 0.9rem;
+}
+ul.archive a { text-decoration: none; font-size: 1.15rem; }
+ul.archive a:hover { text-decoration: underline; text-decoration-thickness: 0.05em; }
+ul.archive .item-note {
+    display: block;
+    font-size: 0.95rem;
+    color: #7d7565;
+    margin-top: 0.3rem;
+}
+
+/* ---------- 简历 ---------- */
+.resume-block { margin-bottom: 2.4rem; }
+.resume-block h3 { margin-bottom: 0.5rem; }
+.resume-meta { font-size: 0.9rem; color: #96703f; letter-spacing: 0.04em; }
+.resume-block ul { margin-top: 0.4rem; }
+
+/* ---------- 正文里的链接 ---------- */
+article a { color: #96703f; text-decoration-thickness: 0.05em; }
+
+/* ---------- 小屏兜底 ---------- */
+@media screen and (max-width: 760px) {
+    body { width: 100%; padding-left: 5%; padding-right: 5%; }
+    figure, figure.memory { max-width: 100%; }
+    figcaption, .sidenote, .marginnote {
+        float: none;
+        margin-right: 0;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0.7rem;
+    }
+    header.masthead { flex-direction: column; align-items: flex-start; }
+    header.masthead nav ul { flex-wrap: wrap; gap: 1rem; }
+    h1 { font-size: 2rem; }
+}
